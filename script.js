@@ -2,6 +2,127 @@
 const YEAR_EL = document.getElementById('year');
 if (YEAR_EL) YEAR_EL.textContent = new Date().getFullYear();
 
+// ===== Utilidades para transiciones y animaciones =====
+
+// Utilidad: transición con View Transitions si existe
+function transition(fn) {
+  if (document.startViewTransition) return document.startViewTransition(fn);
+  return fn();
+}
+
+// Aparición escalonada: setea --i y activa .visible
+function applyStagger(selector = '.fade-in') {
+  const els = document.querySelectorAll(selector);
+  els.forEach((el, i) => el.style.setProperty('--i', i));
+  requestAnimationFrame(() => els.forEach(el => el.classList.add('visible')));
+}
+
+// Observer para "fade-in on view"
+function ioFadeIn(selector = '.fade-in') {
+  const els = document.querySelectorAll(selector);
+  if (!('IntersectionObserver' in window) || !els.length) { 
+    applyStagger(selector); 
+    return; 
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  els.forEach(el => io.observe(el));
+}
+
+// Parallax sutil en hero
+(function heroParallax(){
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let last = -1;
+  const onScroll = () => {
+    const y = Math.min(1, window.scrollY / 400);
+    if (Math.abs(y - last) < 0.01) return;
+    last = y;
+    hero.style.transform = `translateY(${y * -10}px)`;
+  };
+  window.addEventListener('scroll', () => requestAnimationFrame(onScroll), { passive: true });
+})();
+
+// Mapa sugerido de niveles (ajustable)
+const SKILL_LEVELS = {
+  'Python': 90, 'SQL': 85, 'Git & GitHub': 85, 'Azure ML & fundamentos de Azure': 75,
+  'Machine Learning (scikit-learn)': 75, 'Análisis y visualización de datos': 80,
+  'Dash/Plotly': 80, 'Swift (iOS)': 65, 'Git': 85, 'GitHub': 85
+};
+
+// Convierte listas .list.tags en barras accesibles si no hay .skill-meter
+function upgradeSkills() {
+  const container = document.querySelector('#habilidades');
+  if (!container) return;
+
+  const tags = container.querySelectorAll('.list.tags li');
+  if (!tags.length) return;
+
+  // Si ya existen medidores, no tocar
+  if (container.querySelector('.skill-meter')) return;
+
+  const ul = document.createElement('ul');
+  ul.className = 'skills-list';
+
+  tags.forEach(li => {
+    const name = (li.textContent || '').trim();
+    const lvl = SKILL_LEVELS[name] ?? 75;
+    const item = document.createElement('li');
+    item.className = 'skill-item fade-in';
+
+    item.innerHTML = `
+      <div class="skill-row">
+        <span class="skill-name">${name}</span>
+        <span class="skill-level" aria-hidden="true">0%</span>
+      </div>
+      <div class="skill-meter" role="meter" aria-label="${name}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${lvl}">
+        <span class="skill-progress" style="--w:${lvl}%" data-width="${lvl}"></span>
+      </div>
+    `;
+    ul.appendChild(item);
+  });
+
+  // Reemplaza el bloque original de tags por la nueva lista
+  const parent = tags[0].closest('.list.tags');
+  parent.replaceWith(ul);
+}
+
+// Anima contadores a partir del data-width de .skill-progress
+function animateCounters() {
+  const items = document.querySelectorAll('.skill-item');
+  if (!items.length) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(({ isIntersecting, target }) => {
+      if (!isIntersecting) return;
+      const levelEl = target.querySelector('.skill-level');
+      const barEl = target.querySelector('.skill-progress');
+      const targetVal = parseInt(barEl?.getAttribute('data-width') || '0', 10);
+
+      let current = 0;
+      const step = Math.max(1, Math.round(targetVal / 30));
+
+      function tick(){
+        current = Math.min(targetVal, current + step);
+        if (levelEl) levelEl.textContent = current + '%';
+        barEl && (barEl.style.inset = `0 ${100 - current}% 0 0`);
+        if (current < targetVal) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      io.unobserve(target);
+    });
+  }, { threshold: 0.3 });
+
+  items.forEach(i => io.observe(i));
+}
+
 // Mobile nav
 const toggle = document.querySelector('.nav-toggle');
 const navList = document.querySelector('.nav-list');
@@ -81,13 +202,20 @@ function buildFilters(projects){
   filtersEl.innerHTML = '';
   all.forEach(a => {
     const chip = document.createElement('button');
-    chip.className = 'chip' + (a==='todos' ? ' active' : '');
+    chip.className = 'filter-btn chip' + (a==='todos' ? ' active' : '');
     chip.dataset.filter = a;
     chip.textContent = a.replace('-', ' ');
     chip.addEventListener('click', () => {
-      document.querySelectorAll('.filters .chip').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       chip.classList.add('active');
-      renderProjects(projects, a);
+
+      const filter = chip.dataset.filter;
+      transition(() => {
+        renderProjects(window.__ALL_PROJECTS__, filter);
+        // Re-aplicar apariciones
+        ioFadeIn('.project-card.fade-in');
+        applyStagger('.project-card.fade-in');
+      });
     });
     filtersEl.appendChild(chip);
   });
@@ -106,7 +234,7 @@ function cardHTML(p){
   if (p.urls?.demo) links += ` · <a href="${p.urls.demo}" target="_blank" rel="noopener">Demo</a>`;
   if (p.urls?.notebook) links += ` · <a href="${p.urls.notebook}" target="_blank" rel="noopener">Notebook</a>`;
   const tags = (p.tags||[]).slice(0,6).map(t => `<span class="tag">${t}</span>`).join('');
-  return `<article class="card">
+  return `<article class="card project-card fade-in">
     <h3>${p.title}</h3>
     <p>${p.description || ''}</p>
     <div class="meta">${tags}</div>
@@ -124,6 +252,12 @@ function cardHTML(p){
     const others = projects.filter(p => !p.featured);
     projects = dedupeByTitle([...featured, ...others, ...gh]);
   }
+  // Mantener fuente única para render
+  window.__ALL_PROJECTS__ = projects;
   buildFilters(projects);
   renderProjects(projects);
+  ioFadeIn('.project-card.fade-in');
+  applyStagger('.project-card.fade-in');
+  upgradeSkills();
+  animateCounters();
 })();
