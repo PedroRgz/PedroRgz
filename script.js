@@ -77,15 +77,39 @@ function upgradeSkills() {
     const item = document.createElement('li');
     item.className = 'skill-item fade-in';
 
-    item.innerHTML = `
-      <div class="skill-row">
-        <span class="skill-name">${name}</span>
-        <span class="skill-level" aria-hidden="true">0%</span>
-      </div>
-      <div class="skill-meter" role="meter" aria-label="${name}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${lvl}">
-        <span class="skill-progress" style="--w:${lvl}%" data-width="${lvl}"></span>
-      </div>
-    `;
+    // Create elements safely without innerHTML
+    const skillRow = document.createElement('div');
+    skillRow.className = 'skill-row';
+    
+    const skillName = document.createElement('span');
+    skillName.className = 'skill-name';
+    skillName.textContent = name;
+    
+    const skillLevel = document.createElement('span');
+    skillLevel.className = 'skill-level';
+    skillLevel.setAttribute('aria-hidden', 'true');
+    skillLevel.textContent = '0%';
+    
+    skillRow.appendChild(skillName);
+    skillRow.appendChild(skillLevel);
+    
+    const skillMeter = document.createElement('div');
+    skillMeter.className = 'skill-meter';
+    skillMeter.setAttribute('role', 'meter');
+    skillMeter.setAttribute('aria-label', name);
+    skillMeter.setAttribute('aria-valuemin', '0');
+    skillMeter.setAttribute('aria-valuemax', '100');
+    skillMeter.setAttribute('aria-valuenow', lvl);
+    
+    const skillProgress = document.createElement('span');
+    skillProgress.className = 'skill-progress';
+    skillProgress.style.setProperty('--w', lvl + '%');
+    skillProgress.setAttribute('data-width', lvl);
+    
+    skillMeter.appendChild(skillProgress);
+    
+    item.appendChild(skillRow);
+    item.appendChild(skillMeter);
     ul.appendChild(item);
   });
 
