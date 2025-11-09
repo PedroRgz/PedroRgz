@@ -40,21 +40,32 @@ function ioFadeIn(selector = '.fade-in') {
   const hero = document.querySelector('.hero');
   if (!hero) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  
+  // Apply will-change dynamically for better performance
+  hero.style.willChange = 'transform';
+  
   let last = -1;
+  let rafPending = false;
   const onScroll = () => {
     const y = Math.min(1, window.scrollY / 400);
     if (Math.abs(y - last) < 0.01) return;
     last = y;
     hero.style.transform = `translateY(${y * -10}px)`;
+    rafPending = false;
   };
-  window.addEventListener('scroll', () => requestAnimationFrame(onScroll), { passive: true });
+  
+  window.addEventListener('scroll', () => {
+    if (rafPending) return;
+    rafPending = true;
+    requestAnimationFrame(onScroll);
+  }, { passive: true });
 })();
 
 // Mapa sugerido de niveles (ajustable)
 const SKILL_LEVELS = {
   'Python': 90, 'SQL': 85, 'Git & GitHub': 85, 'Azure ML & fundamentos de Azure': 75,
   'Machine Learning (scikit-learn)': 75, 'Análisis y visualización de datos': 80,
-  'Dash/Plotly': 80, 'Swift (iOS)': 65, 'Git': 85, 'GitHub': 85
+  'Dash/Plotly': 80, 'Swift (iOS)': 65
 };
 
 // Convierte listas .list.tags en barras accesibles si no hay .skill-meter
@@ -114,16 +125,25 @@ function upgradeSkills() {
   });
 
   // Reemplaza el bloque original de tags por la nueva lista
-  const parent = tags[0].closest('.list.tags');
-  parent.replaceWith(ul);
+  const parent = tags[0] ? tags[0].closest('.list.tags') : null;
+  if (parent && parent instanceof Element) {
+    parent.replaceWith(ul);
+  }
 }
 
 // Anima contadores a partir del data-width de .skill-progress
+let skillsObserver = null;
+
 function animateCounters() {
   const items = document.querySelectorAll('.skill-item');
   if (!items.length) return;
 
-  const io = new IntersectionObserver((entries) => {
+  // Cleanup existing observer if any
+  if (skillsObserver) {
+    skillsObserver.disconnect();
+  }
+
+  skillsObserver = new IntersectionObserver((entries) => {
     entries.forEach(({ isIntersecting, target }) => {
       if (!isIntersecting) return;
       const levelEl = target.querySelector('.skill-level');
@@ -134,17 +154,20 @@ function animateCounters() {
       const step = Math.max(1, Math.round(targetVal / 30));
 
       function tick(){
+        // Check if elements still exist in DOM
+        if (!document.body.contains(target) || !levelEl || !barEl) return;
+        
         current = Math.min(targetVal, current + step);
-        if (levelEl) levelEl.textContent = current + '%';
-        barEl && (barEl.style.inset = `0 ${100 - current}% 0 0`);
+        levelEl.textContent = current + '%';
+        barEl.style.inset = `0 ${100 - current}% 0 0`;
         if (current < targetVal) requestAnimationFrame(tick);
       }
       requestAnimationFrame(tick);
-      io.unobserve(target);
+      skillsObserver.unobserve(target);
     });
   }, { threshold: 0.3 });
 
-  items.forEach(i => io.observe(i));
+  items.forEach(i => skillsObserver.observe(i));
 }
 
 // Mobile nav
@@ -161,6 +184,7 @@ if (toggle && navList) {
 const AUTO_FETCH_GITHUB = true;      // Cambiar a false si se quiere sólo la lista local
 const GITHUB_USER = 'PedroRgz';
 let LOCAL_PROJECTS = [];
+let allProjects = []; // Module-scoped variable instead of global
 
 async function loadLocalProjects(){
   try{
@@ -234,11 +258,13 @@ function buildFilters(projects){
       chip.classList.add('active');
 
       const filter = chip.dataset.filter;
+      // Guard against empty or undefined allProjects
+      if (!allProjects || !allProjects.length) return;
+      
       transition(() => {
-        renderProjects(window.__ALL_PROJECTS__, filter);
-        // Re-aplicar apariciones
+        renderProjects(allProjects, filter);
+        // Only call ioFadeIn - it handles stagger internally as fallback
         ioFadeIn('.project-card.fade-in');
-        applyStagger('.project-card.fade-in');
       });
     });
     filtersEl.appendChild(chip);
@@ -276,12 +302,12 @@ function cardHTML(p){
     const others = projects.filter(p => !p.featured);
     projects = dedupeByTitle([...featured, ...others, ...gh]);
   }
-  // Mantener fuente única para render
-  window.__ALL_PROJECTS__ = projects;
+  // Store in module-scoped variable
+  allProjects = projects;
   buildFilters(projects);
   renderProjects(projects);
+  // Only call ioFadeIn - it handles stagger internally as fallback
   ioFadeIn('.project-card.fade-in');
-  applyStagger('.project-card.fade-in');
   upgradeSkills();
   animateCounters();
 })();

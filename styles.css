@@ -97,7 +97,7 @@ a:hover{text-decoration:underline}
 
 /* Cards con ligera elevación */
 .project-card { transition: transform .25s var(--ease-standard), box-shadow .25s var(--ease-standard); }
-.project-card:hover { transform: translateY(-4px) scale(1.01); will-change: transform; }
+.project-card:hover { transform: translateY(-4px) scale(1.01); }
 
 /* View Transitions (si está disponible) */
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .35s; }
@@ -124,9 +124,6 @@ section { content-visibility: auto; contain-intrinsic-size: 1px 1000px; }
   background: linear-gradient(90deg, var(--brand), var(--brand-2));
   transform: translateZ(0);
 }
-
-/* Parallax sutil en hero (se activa por JS) */
-.hero { will-change: transform; }
 
 /* Respeto a reduced-motion */
 @media (prefers-reduced-motion: reduce) {
