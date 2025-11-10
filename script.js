@@ -306,8 +306,14 @@ function cardHTML(p){
   allProjects = projects;
   buildFilters(projects);
   renderProjects(projects);
-  // Only call ioFadeIn - it handles stagger internally as fallback
-  ioFadeIn('.project-card.fade-in');
+
+  // Construir la lista de habilidades antes de activar las animaciones
   upgradeSkills();
+
+  // Activar fade-in tanto en tarjetas de proyectos como en items de habilidades
+  ioFadeIn('.project-card.fade-in');
+  ioFadeIn('.skill-item.fade-in');
+
+  // Animar contadores/barras de habilidades
   animateCounters();
 })();
