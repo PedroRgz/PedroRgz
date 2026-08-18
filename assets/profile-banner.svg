@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Pedro Rodríguez — Physician, Founder and Health Software Builder</title>
+  <desc id="desc">Editorial profile banner in amethyst, tomato and mustard, inspired by Pedro Rodríguez's personal portfolio.</desc>
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0V60" fill="none" stroke="#25003D" stroke-opacity=".065" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="360" rx="18" fill="#FAFAFB"/>
+  <rect width="1200" height="360" rx="18" fill="url(#grid)"/>
+  <path d="M0 18A18 18 0 0 1 18 0h1164a18 18 0 0 1 18 18v7H0z" fill="#25003D"/>
+
+  <g transform="translate(58 62)">
+    <rect width="54" height="54" fill="none" stroke="#25003D" stroke-width="2"/>
+    <path d="M27 0V54M0 27H54" stroke="#25003D" stroke-opacity=".18"/>
+    <text x="8" y="22" fill="#25003D" font-family="Georgia,serif" font-size="22">P</text>
+    <text x="34" y="46" fill="#F06543" font-family="Georgia,serif" font-size="22" font-style="italic">r</text>
+  </g>
+
+  <text x="58" y="160" fill="#25003D" font-family="Georgia,serif" font-size="68" letter-spacing="-2">Pedro Rodríguez<tspan fill="#F06543">.</tspan></text>
+  <text x="62" y="205" fill="#3A1457" font-family="Arial,sans-serif" font-size="21" letter-spacing="1.1">PHYSICIAN · FOUNDER · HEALTH SOFTWARE BUILDER</text>
+
+  <line x1="58" y1="246" x2="1142" y2="246" stroke="#25003D" stroke-opacity=".18"/>
+
+  <g font-family="Arial,sans-serif">
+    <text x="62" y="278" fill="#7A6A86" font-size="12" letter-spacing="2">FOCUS</text>
+    <text x="62" y="306" fill="#25003D" font-size="18">Medicine × Product × Data</text>
+
+    <text x="420" y="278" fill="#7A6A86" font-size="12" letter-spacing="2">BASED IN</text>
+    <text x="420" y="306" fill="#25003D" font-size="18">Mérida, México</text>
+
+    <text x="728" y="278" fill="#7A6A86" font-size="12" letter-spacing="2">BUILDING</text>
+    <text x="728" y="306" fill="#25003D" font-size="18">Clinical systems · AI workflows</text>
+  </g>
+
+  <rect x="58" y="332" width="770" height="5" rx="2.5" fill="#25003D"/>
+  <rect x="836" y="332" width="184" height="5" rx="2.5" fill="#F06543"/>
+  <rect x="1028" y="332" width="114" height="5" rx="2.5" fill="#FFD95C"/>
+</svg>
