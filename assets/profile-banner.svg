@@ -1,40 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
   <title id="title">Pedro Rodríguez — Physician, Founder and Health Software Builder</title>
-  <desc id="desc">Editorial profile banner in amethyst, tomato and mustard, inspired by Pedro Rodríguez's personal portfolio.</desc>
+  <desc id="desc">Editorial profile banner in amethyst, tomato and mustard.</desc>
   <defs>
     <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-      <path d="M60 0H0V60" fill="none" stroke="#25003D" stroke-opacity=".065" stroke-width="1"/>
+      <path d="M60 0H0V60" fill="none" stroke="#25003D" stroke-opacity=".06" stroke-width="1" />
     </pattern>
   </defs>
-
-  <rect width="1200" height="360" rx="18" fill="#FAFAFB"/>
-  <rect width="1200" height="360" rx="18" fill="url(#grid)"/>
-  <path d="M0 18A18 18 0 0 1 18 0h1164a18 18 0 0 1 18 18v7H0z" fill="#25003D"/>
-
-  <g transform="translate(58 62)">
-    <rect width="54" height="54" fill="none" stroke="#25003D" stroke-width="2"/>
-    <path d="M27 0V54M0 27H54" stroke="#25003D" stroke-opacity=".18"/>
-    <text x="8" y="22" fill="#25003D" font-family="Georgia,serif" font-size="22">P</text>
-    <text x="34" y="46" fill="#F06543" font-family="Georgia,serif" font-size="22" font-style="italic">r</text>
+  <rect width="1200" height="260" rx="4" fill="#FAFAFB" />
+  <rect width="1200" height="260" rx="4" fill="url(#grid)" />
+  <path d="M0 4A4 4 0 0 1 4 0h1192a4 4 0 0 1 4 4v8H0z" fill="#25003D" />
+  <g transform="translate(58 52)">
+    <rect width="58" height="58" fill="none" stroke="#25003D" stroke-width="2" />
+    <text x="10" y="39" fill="#25003D" font-family="Georgia,Times New Roman,serif" font-size="30">P</text>
+    <text x="33" y="40" fill="#F06543" font-family="Georgia,Times New Roman,serif" font-size="27" font-style="italic">r</text>
   </g>
-
-  <text x="58" y="160" fill="#25003D" font-family="Georgia,serif" font-size="68" letter-spacing="-2">Pedro Rodríguez<tspan fill="#F06543">.</tspan></text>
-  <text x="62" y="205" fill="#3A1457" font-family="Arial,sans-serif" font-size="21" letter-spacing="1.1">PHYSICIAN · FOUNDER · HEALTH SOFTWARE BUILDER</text>
-
-  <line x1="58" y1="246" x2="1142" y2="246" stroke="#25003D" stroke-opacity=".18"/>
-
-  <g font-family="Arial,sans-serif">
-    <text x="62" y="278" fill="#7A6A86" font-size="12" letter-spacing="2">FOCUS</text>
-    <text x="62" y="306" fill="#25003D" font-size="18">Medicine × Product × Data</text>
-
-    <text x="420" y="278" fill="#7A6A86" font-size="12" letter-spacing="2">BASED IN</text>
-    <text x="420" y="306" fill="#25003D" font-size="18">Mérida, México</text>
-
-    <text x="728" y="278" fill="#7A6A86" font-size="12" letter-spacing="2">BUILDING</text>
-    <text x="728" y="306" fill="#25003D" font-size="18">Clinical systems · AI workflows</text>
-  </g>
-
-  <rect x="58" y="332" width="770" height="5" rx="2.5" fill="#25003D"/>
-  <rect x="836" y="332" width="184" height="5" rx="2.5" fill="#F06543"/>
-  <rect x="1028" y="332" width="114" height="5" rx="2.5" fill="#FFD95C"/>
+  <text x="142" y="102" fill="#25003D" font-family="Georgia,Times New Roman,serif" font-size="68" letter-spacing="-1.5">Pedro Rodríguez<tspan fill="#F06543">.</tspan></text>
+  <text x="60" y="161" fill="#3A1457" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="25" letter-spacing="1.6">PHYSICIAN · FOUNDER · HEALTH SOFTWARE BUILDER</text>
+  <line x1="58" y1="195" x2="1142" y2="195" stroke="#25003D" stroke-opacity=".12" />
+  <text x="60" y="226" fill="#7A6A86" font-family="Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif" font-size="16" letter-spacing="1.8">MEDICINE × PRODUCT × DATA</text>
+  <rect x="786" y="222" width="192" height="5" rx="2.5" fill="#25003D" />
+  <rect x="986" y="222" width="94" height="5" rx="2.5" fill="#F06543" />
+  <rect x="1088" y="222" width="54" height="5" rx="2.5" fill="#FFD95C" />
 </svg>

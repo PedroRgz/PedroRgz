@@ -1,129 +1,111 @@
 <p align="center">
-  <img src="./assets/profile-banner.svg" width="100%" alt="Pedro Rodríguez — Physician, Founder and Health Software Builder" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-banner-dark.svg" />
+    <img src="./assets/profile-banner.svg" width="100%" alt="Pedro Rodríguez — Physician, Founder and Health Software Builder" />
+  </picture>
 </p>
 
-I am a physician who works across **clinical reasoning, product architecture, software engineering and data**. I turn healthcare and operational problems into structured systems, reliable workflows and decision-support tools.
+# Pedro Rodríguez
 
-My work is shaped by a simple principle: technology in healthcare should be **useful, understandable and worthy of trust**.
+Physician, founder and health software builder working across **clinical reasoning, product architecture, software engineering and data**. I turn healthcare and operational problems into structured systems, reliable workflows and decision-support tools.
 
-<p>
-  <a href="https://www.pedrorodriguez.me"><img src="https://img.shields.io/badge/Portfolio-25003D?style=flat-square&logo=safari&logoColor=white" alt="Portfolio" /></a>
-  <a href="https://www.linkedin.com/in/pedro-rgz/"><img src="https://img.shields.io/badge/LinkedIn-F06543?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="mailto:pedro.rodriguez.g@icloud.com"><img src="https://img.shields.io/badge/Email-FFD95C?style=flat-square&logo=maildotru&logoColor=25003D" alt="Email" /></a>
-  <img src="https://img.shields.io/badge/Mérida%2C%20México-FAFAFB?style=flat-square&logo=googlemaps&logoColor=F06543&labelColor=FAFAFB" alt="Mérida, México" />
-</p>
+My path began as a self-taught developer and grew into a data science and product practice shaped by medicine, neuroscience and a simple principle: healthcare technology should be **useful, understandable and worthy of trust**.
+
+`MÉRIDA, MÉXICO` &nbsp;·&nbsp; `OPEN TO ROLES & COLLABORATIONS`
+
+`PORTFOLIO` [pedrorodriguez.me](https://www.pedrorodriguez.me) &nbsp;·&nbsp; `LINKEDIN` [pedro-rgz](https://www.linkedin.com/in/pedro-rgz/) &nbsp;·&nbsp; `EMAIL` [pedro.rodriguez.g@icloud.com](mailto:pedro.rodriguez.g@icloud.com)
 
 ---
 
-## `01 /` Current focus
+## `01 / Selected Work`
 
-- Founding and directing private healthcare software products.
-- Translating clinical workflows into product and engineering requirements.
-- Building reproducible data and AI-assisted research pipelines.
-- Improving software quality through testing, access control, documentation and security review.
-- Connecting clinical judgment with analytics and product strategy.
+### Products I Lead
 
----
+#### Sinthia — Private clinical software product
 
-## `02 /` Products I lead
+**Founder & Product Architect** &nbsp; `Since 2025` &nbsp; `Private`
 
-### Sinthia — Private clinical software product
-
-**Founder · Product Owner · Lead Architect** &nbsp; `Private development`
-
-I conceived and own Sinthia, a private software product designed around real-world clinical workflows. I define its product vision, clinical requirements and architectural direction while leading a multidisciplinary development team.
-
-My responsibilities include prioritizing the roadmap, translating clinical needs into technical requirements, reviewing architectural decisions, approving significant changes, and overseeing product quality, security and release readiness.
+I conceived and own Sinthia, define its product vision, clinical requirements and architectural direction, and lead the collaborating development team. I retain final responsibility for roadmap, significant product changes, quality, security and release readiness.
 
 `Healthcare software` · `Product architecture` · `Clinical workflows` · `Team leadership`
 
-> Product mechanics, clinical logic, system architecture and source code are intentionally undisclosed.
+#### ELUN — Healthcare professional community
 
-### ELUN — Healthcare professional community
+**Founder & Product Lead** &nbsp; `Concept evolving since 2019` &nbsp; `Founded 2026` &nbsp; `Private`
 
-**Founder · Product Creator · Product Lead** &nbsp; `Private development`
-
-I originated ELUN and lead its development as a dedicated digital product for healthcare professionals. I am responsible for the product concept, strategic direction, clinical positioning and overall experience.
-
-I coordinate the team's work, define product requirements, evaluate design and technical proposals, and retain final responsibility for roadmap and product decisions.
+I originated ELUN and lead its development as a dedicated digital product for healthcare professionals. I direct a four-person team, define the product requirements and clinical positioning, evaluate design and technical proposals, and retain final responsibility for roadmap and product decisions.
 
 `Digital health` · `Product strategy` · `Community design` · `Trust and safety`
 
-> Identity systems, collaboration mechanics, AI workflows and business strategy remain confidential.
+> For private products, implementation mechanics, clinical logic, identity systems, system architecture, source code and business strategy are intentionally undisclosed.
 
----
+### Selected Technical Engagements
 
-## `03 /` Selected technical work
+#### Technical audit — AI-assisted medical education platform
 
-### Technical audit — AI-assisted medical education platform
+**Independent Technical Auditor & Solution Architect** &nbsp; `Third-party platform` &nbsp; `Assessment`
 
-**Independent Technical Auditor · Solution Architect** &nbsp; `Third-party platform`
-
-Conducted a pre-engagement technical assessment of an AI-assisted educational platform developed by a third party. Evaluated its prototype architecture, operational risks, security posture and readiness for continued development.
-
-Produced a modernization proposal covering maintainability, data handling, security controls and phased implementation.
+Conducted a pre-engagement assessment of an AI-assisted educational platform developed by a third party. Evaluated its prototype architecture, operational risks, security posture and readiness for continued development, then produced a phased modernization proposal. Implementation has not formally commenced and client-identifying details are withheld.
 
 `Technical audit` · `AI prototypes` · `Security review` · `Architecture planning`
 
-> Assessment and proposal only. Implementation has not formally commenced, and client-identifying details are withheld.
+#### BTC Analysis — Orchestrated market evidence pipeline
 
-### BTC Analysis — Orchestrated market evidence pipeline
+**Creator & Data Workflow Architect** &nbsp; `Controlled case study`
 
-**Creator · Data Workflow Architect** &nbsp; `Controlled case study`
-
-Designed a reproducible research workflow that collects, validates and packages multi-source evidence for structured Bitcoin market analysis. The system coordinates specialized processing stages, applies automated quality checks and produces portable evidence bundles for downstream analysis.
-
-```mermaid
-flowchart LR
-    A[Data sources] --> B[Context collection]
-    B --> C[Metrics and features]
-    C --> D[Validation]
-    D --> E[Evidence bundle]
-```
+Designed a reproducible workflow that coordinates market, on-chain, macroeconomic and news context; validates collection stages; derives structured features; and packages portable evidence bundles for downstream Bitcoin market analysis.
 
 `Python` · `Deepnote` · `Data orchestration` · `Quality validation` · `Automation`
 
-> Data sources, calculated signals, thresholds, prompts and decision rules remain private. A sanitized technical overview is in preparation.
+> Sources, calculated signals, thresholds, prompts and decision rules remain private.
 
----
-
-## `04 /` Selected public work
+### Public Work
 
 | Project | What it demonstrates | Core tools |
 |---|---|---|
 | [**PedroRodriguez.me**](https://github.com/PedroRgz/pedrorodriguez.me) | Personal portfolio with an editorial design system and responsive interface. | React · JavaScript · CSS |
-| [**Episcopio**](https://github.com/PedroRgz/Episcopio) | A social-media analytics MVP designed around an API and cloud deployment. | Python · API · Azure · Docker |
+| [**Episcopio**](https://github.com/PedroRgz/Episcopio) | Social-media analytics MVP designed around an API and cloud deployment. | Python · API · Azure · Docker |
 | [**Breast cancer risk factors**](https://github.com/PedroRgz/Risk-Factors-for-breast-cancer-in-cuban-population) | Epidemiological analysis connecting medical reasoning with reproducible data work. | Python · Epidemiology · Data analysis |
 | [**SpaceX launch analysis**](https://github.com/PedroRgz/CareerAcademy-IBM-DS-RocketLaunchesAnalysis) | End-to-end exploration, feature engineering and predictive modeling. | Python · SQL · Scikit-learn · Folium |
 | [**Missing-data course**](https://github.com/PedroRgz/Curso-Manejo-de-datos-faltantes) | Reproducible notebooks and practical decision frameworks for incomplete datasets. | Pandas · Jupyter · Methodology |
-| [**Earth iOS AR**](https://github.com/PedroRgz/Earth-iOS-AR) | An augmented-reality experiment built for iOS. | Swift · ARKit · iOS |
+| [**Earth iOS AR**](https://github.com/PedroRgz/Earth-iOS-AR) | Augmented-reality experiment built for iOS. | Swift · ARKit · iOS |
 
 ---
 
-## `05 /` Practice and toolkit
+## `02 / About`
 
-| Product & engineering | Data & AI | Clinical & research |
-|---|---|---|
-| Product architecture | Python · Pandas · NumPy | Clinical workflow modeling |
-| Requirements and roadmaps | SQL · PostgreSQL | Evidence appraisal |
-| Git · GitHub Actions | Scikit-learn · MLflow | Epidemiological reasoning |
-| Automated testing | Plotly · Matplotlib | Structured clinical documentation |
-| Azure · Heroku · Docker | Jupyter · Deepnote | Interdisciplinary communication |
-| Security and access control | Agentic workflows and automation | Healthcare product strategy |
+I work where clinical insight, engineering and product ownership need to coexist. Medical training taught me to reason under uncertainty; software and data gave me ways to turn that reasoning into repeatable systems.
 
-I hold an **M.D. from Universidad Autónoma de Yucatán**, the **IBM Data Science Professional Certificate**, and **Microsoft Certified: Azure Fundamentals**.
+I treat product decisions as hypotheses to test: make assumptions explicit, document trade-offs, validate data, review changes carefully and design around the people who will actually use the system.
+
+My current interests include clinical software, AI-assisted workflows, neuroscience of learning, active inference and trustworthy decision-support systems.
 
 ---
 
-## `06 /` How I work
+## `03 / Experience & Education`
 
-I treat product and engineering decisions as hypotheses to test. That means making assumptions explicit, documenting trade-offs, validating data, reviewing changes carefully and designing for the people who will actually use the system.
-
-I am especially interested in roles and collaborations where **clinical insight, data and product ownership** need to coexist.
+- **M.D., Universidad Autónoma de Yucatán — 2024.** Clinical education and practice with sustained interests in neuroscience, evidence appraisal and digital health.
+- **IBM Data Science Professional Certificate — 2024.** Python, SQL, data analysis, visualization, machine learning and applied projects.
+- **Microsoft Certified: Azure Fundamentals (AZ-900) — 2021.** Cloud concepts, Azure services, security and governance fundamentals.
+- **Clinical practice — Mérida, México.** Primary care, independent clinical work and improvement of healthcare documentation and operational processes.
 
 ---
 
-## `07 /` Contact
+## `04 / Practice & Skills`
+
+**Product and engineering:** `Product architecture` · `Requirements` · `Roadmaps` · `Git` · `Automated testing` · `Security review`
+
+**Data and AI:** `Python` · `Pandas` · `SQL` · `PostgreSQL` · `Scikit-learn` · `MLflow` · `Plotly` · `Jupyter` · `Deepnote`
+
+**Delivery and private product development:** `GitHub Actions` · `Azure` · `Heroku` · `Docker` · `Access control` · `Agentic workflows`
+
+**Clinical practice:** `Clinical workflow modeling` · `Evidence appraisal` · `Epidemiological reasoning` · `Structured documentation` · `Healthcare product strategy`
+
+---
+
+## `05 / Contact`
+
+I am open to roles and collaborations involving **healthcare products, clinical data, AI-assisted systems and multidisciplinary technical leadership**.
 
 - Portfolio: [pedrorodriguez.me](https://www.pedrorodriguez.me)
 - LinkedIn: [linkedin.com/in/pedro-rgz](https://www.linkedin.com/in/pedro-rgz/)
